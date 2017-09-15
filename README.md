@@ -1,3 +1,33 @@
+# Welcome to Oracle Open World 2017 - EventHub Hands On Lab
+
+## Introduction
+
+EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In this lab, you will be seting up an EventHub Cluster in Oracle Cloud and stream data through it. This lab is devided into 3 sections
+
+**Section#1**: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
+
+**Section#2**: SSH into the EventHub Cluster and use Kafka built in tools to produce and consume data
+
+**Section#3** (Advanced): Deploy a Microservice app (NodeJS) in Application Container Cloud Service
+
+##Prerequisites
+- Internet access on your laptop
+- Oracle Cloud Account user name, password, data center infomation ( this will be provided in the lab)
+- Ability to SSH to the Oracle Cloud from your Terminal (Mac) or Putty (Windows)
+
+
+### Section#1: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
+
+### Step 1:
+
+Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
+
+![](images/cloudlogin.png)
+
+
+
+
+
 # Upload to Oracle Application Container Cloud
 
 ## Producer application
@@ -22,7 +52,7 @@ Once the application is deployed, you should see it in the **Applications** menu
 
 ![](images/accs-deployed-app.jpg)
 
-	
+
 Producer application starts pushing tweets in real time to Oracle Event Hub Cloud once it gets deployed
 
 ## Consumer application

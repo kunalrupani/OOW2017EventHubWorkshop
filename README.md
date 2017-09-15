@@ -31,6 +31,7 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 ![](images/createCluster.png)
 
 ** Download a pre-made public and private ssh key from the GitHub repo. This will be needed for the configuraiton in the next page.
+
 ![](images/configureClusterandCreate.png)
 ![](images/clustercreated.png)
 

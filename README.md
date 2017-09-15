@@ -16,7 +16,7 @@ EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In 
 - Ability to SSH to the Oracle Cloud from your Terminal (Mac) or Putty (Windows)
 
 
-### Section#1: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
+### Section #1: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
 
 ### Step 1:
 

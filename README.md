@@ -13,8 +13,7 @@ EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In 
 ##Prerequisites
 - Internet access on your laptop
 - Oracle Cloud Account user name, password, data center infomation ( this will be provided in the lab)
-- Ability to SSH to the Oracle Cloud from your Terminal (Mac) or Putty (Windows)
-
+- Ability to SSH to the Oracle Cloud from your Terminal (Mac) or Putty (Windows).Download a pre-made public and private ssh key from the GitHub repo. You will use these keys to SSH into the EventHub Cluster
 
 ### Section #1: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
 
@@ -27,18 +26,18 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 
 ![](images/cloudlogin.png)
 
-** - Select EventHub - Dedicated Cloud Service**
+**Select EventHub - Dedicated Cloud Service**
 ![](images/dashboard.png)
 
 
-** - Go to the Service console**
+**-Go to the Service console**
 ![](images/serviceconsole.png)
 
 ### Step 2: Create your EventHub Cluster
 
 ![](images/createCluster.png)
 
-** Download a pre-made public and private ssh key from the GitHub repo. This will be needed for the configuraiton in the next page.
+
 
 ![](images/configureClusterandCreate.png)
 

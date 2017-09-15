@@ -15,7 +15,7 @@ EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In 
 - Oracle Cloud Account user name, password, data center infomation ( this will be provided in the lab)
 - Ability to SSH to the Oracle Cloud from your Terminal (Mac) or Putty (Windows).Download a pre-made public and private ssh key from the GitHub repo. You will use these keys to SSH into the EventHub Cluster
 
-### Section #1: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
+### **Section#1**: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
 
 ### Step 1: Login to the Oracle Cloud
 
@@ -38,10 +38,10 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 **Give the cluster a name of your choice**
 ![](images/createCluster.png)
 
-**Use the previously downloaded (prerequisites) ssh public key for the configuration below and complete the configuration. Use defaults for all**
+**Use the previously downloaded (see prerequisites) ssh public key and complete the configuration. Use defaults for all**
 ![](images/configureClusterandCreate.png)
 
-**Once the above step is complete - the cluster should be created in a couple minutes This should take a couple minutes**
+**Once the above step is complete - the cluster should be created in a couple minutes**
 ![](images/clustercreated.png)
 
 
@@ -55,7 +55,17 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 ![](images/createStream.png)
 
 
+### Congratulations!. You have now successully created an EventHub Cluster and are ready to produce and consume high throughput streams !
 
+
+## **Section#2**: SSH into the EventHub Cluster and use Kafka built in tools to produce and consume data
+
+
+
+
+
+
+## **Section#3** (Advanced): Deploy a Microservice app (NodeJS) in Application Container Cloud Service
 
 # Upload to Oracle Application Container Cloud
 

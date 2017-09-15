@@ -22,10 +22,16 @@ EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In 
 
 Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 
+**Selection _Traditional Cloud Account_ and Data Center to be us2 **
+
+
 ![](images/cloudlogin.png)
 
+**Select EventHub - Dedicated Cloud Service**
 ![](images/dashboard.png)
 
+
+**Go to the Service console**
 ![](images/serviceconsole.png)
 
 ### Step 2: Create your EventHub Cluster

@@ -21,7 +21,7 @@ EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In 
 
 Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 
-**Select _Traditional Cloud Account_ and Data Center to be us2 **
+**Select _Traditional Cloud Account_ and Data Center to be us2**
 
 
 ![](images/cloudlogin.png)
@@ -30,22 +30,31 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 ![](images/dashboard.png)
 
 
-**-Go to the Service console**
+**Go to the Service console**
 ![](images/serviceconsole.png)
 
 ### Step 2: Create your EventHub Cluster
 
+**Give the cluster a name of your choice**
 ![](images/createCluster.png)
 
-
-
+**Use the previously downloaded (prerequisites) ssh public key for the configuration below and complete the configuration. Use defaults for all**
 ![](images/configureClusterandCreate.png)
 
+**Once the above step is complete - the cluster should be created in a couple minutes This should take a couple minutes**
 ![](images/clustercreated.png)
 
-** This should take a couple minutes **
 
 ### Step 3: Create a Topic in your cluster
+
+**Go to EventHub-Topics Console**
+![](images/gotoTopics.png)
+
+**Give the topic a name, use the defaults for the remaining configuration**
+**Note that the name of the topic created will be of the format _identitydomainname-TopicName_ **
+![](images/createStream.png)
+
+
 
 
 # Upload to Oracle Application Container Cloud

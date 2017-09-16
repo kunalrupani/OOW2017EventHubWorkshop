@@ -14,8 +14,13 @@ EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In 
 - Internet access on your laptop
 - Oracle Cloud Account user name, password, data center infomation ( this will be provided in the lab)
 - Ability to SSH to the Oracle Cloud from your Terminal (Mac) or Putty (Windows).Download a pre-made public and private ssh key from the GitHub repo. You will use these keys to SSH into the EventHub Cluster
+- For Section 3: A Twitter developer account and the required credentials for your app:
+  - consumer_key
+  - consumer_secret
+  - access_token_key
+  - access_token_secret
 
-### **Section#1**: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
+## **Section#1**: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
 
 ### Step 1: Login to the Oracle Cloud
 
@@ -68,7 +73,7 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 ![](images/AccessRulesPage.png)
 
 ### Step 2: SSH into your cluster
-- **ssh -i <private-key> opc@<ip-address-of-your-node>**
+- **ssh -i <private-key> opc@ip-address-of-your-node**
 
 - **sudo su oracle**
 
@@ -77,10 +82,10 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 ### Step 2: Start the producer and the consumer
 
 #### Start the Producer
-- **./kafka-console-producer.sh --broker-list <ip-address-of-your-node>:6667 --topic  <identityDomain-nameofyourtopic>**
+- **./kafka-console-producer.sh --broker-list ip-address-of-your-node:6667 --topic  identityDomain-nameofyourtopic**
 
 #### Follow Step 1 again in a different window and start the Consumer
-- **./kafka-console-consumer.sh --bootstrap-server <ip-address-of-your-node>:6667 --topic  <identityDomain-nameofyourtopic> --from-beginning**
+- **./kafka-console-consumer.sh --bootstrap-server ip-address-of-your-node:6667 --topic identityDomain-nameofyourtopic --from-beginning**
 
 ### Step 3: Send data
 
@@ -91,7 +96,7 @@ Type text/characters in the producer window. You will see the strings passed thr
 ### Step 4: Misc.
 
 The directory has several other command line tools to use - for instance you can type the below command to describe the topic configurtion
-- **./kafka-topics.sh --describe --zookeeper localhost:2181 --topic <identityDomain-nameofyourtopic>**
+- **./kafka-topics.sh --describe --zookeeper localhost:2181 --topic identityDomain-nameofyourtopic**
 
 ### Congratulations!.
 ### You have completed Section#2. If you still have time left - please proceed to Section#3
@@ -99,9 +104,30 @@ The directory has several other command line tools to use - for instance you can
 
 ## **Section#3** (Advanced): Deploy a Microservice app (NodeJS) in Application Container Cloud Service
 
-# Upload to Oracle Application Container Cloud
+In this section - you will deploy a Twitter feed Producer app written in NodeJS in Oracle Application Container Cloud Service. This app reads tweets from Twitter based on a certain filter criteria and send this data to your EventHub topic. These tweets can be read from the consumer command line utlity used above or by another app that would consume the tweets and diplay this in your brower.
 
-## Producer application
+### Step 1: Download the NodeJS zip archive from the GitHub repo.
+The name of the zip archive is **TwitterNodeJsProducer.zip**.
+
+### Step 2: Unzip and Update app.
+The app needs to be updated with :
+- The IP address of your node (kafkaconfig.js)
+- The Name of your Topic <identiyDomainName-topicname> (index.js)
+- TwitterDeveloper credentials for use in this app (twitterconfig.js)
+
+Once the updates are complete - zip up the contents in the directory containing the entire source code. (exclude the directory itself)
+
+### Step 3: Opening Kafka Server ports for Public Internet Access (Your EventHub node on Port 6667)
+
+This is needed so that your App which you will deploy in Application Container cloud service can communicate with your EventHub Broker.
+
+In a previous section, you had learnt how to change Access Rules. Do you still remember ?.
+
+Try doing this yourself (of course you can ask for help if you are stuck :).
+
+### Step 4: Upload Twitter Producer app to Oracle Application Container Cloud
+
+Using the dashboard - navigate to Application Container Cloud Service
 
 - Access the **Applications** list view
 
@@ -112,7 +138,7 @@ The directory has several other command line tools to use - for instance you can
 ![](images/accs_create_app_node.jpg)
 
 - In the **Create Application** section, enter a name for your application, replace the **Notification Email** address with your own (or leave it blank) and click **Choose File** next to **Archive**
-- On the File Upload dialog box, select the `TwitterProducerApp.zip` file and click **Open**
+- On the File Upload dialog box, select your new version of `TwitterNodeJsProducer.zip` file and click **Open**
 - Click **Choose File** next to **Deployment Configuration**
 - On the File Upload dialog box, select the `deployment.json` file click **Open**
 - Finally, click **Create** to start the application deployment
@@ -126,8 +152,18 @@ Once the application is deployed, you should see it in the **Applications** menu
 
 Producer application starts pushing tweets in real time to Oracle Event Hub Cloud once it gets deployed
 
-## Consumer application
+If you want to change the hashtag for the tweets you want to see, just use the following URL `<ACCS_PRODUCER_APP_URL>/hashtag/<your_hashtags>` e.g. `https://TwitterProducerApp-test.apaas.us2.oraclecloud.com/hastag/kafka`
 
+### Step 5: Consuming the feeds from EventHub
+
+You have two options here.
+
+- Use the same command line consumer tool used in Section#2 to see the live feeds
+- Deploy a Java EE consumer app (instructions below) to view the tweets. See Step 6 below.
+
+### Step 6:(Optional)Consumer application
+
+- Download accs-kafka-tweet-consumer.war and deployment.json from the Github repo
 - In the Applications list view, click **Create Application** and select **Java EE**.
 
 ![](images/accs_create_app_javaee.jpg)
@@ -140,12 +176,7 @@ Producer application starts pushing tweets in real time to Oracle Event Hub Clou
 
 Once the application is deployed, you should see it in the **Applications** menu
 
-# Access the application
-
-## Consumer application
-
 To start seeing the tweet stream, open the consumer application URL in your browser - e.g. `https://TwitterConsumerApp-test.apaas.us2.oraclecloud.com`
 
-## Change tweet filter criteria
-
-If you want to change the hashtag for the tweets you want to see, just use the following URL `<ACCS_PRODUCER_APP_URL>/hashtag/<your_hashtags>` e.g. `https://TwitterProducerApp-test.apaas.us2.oraclecloud.com/hastag/hurricane,java,kafka`
+### Congratulations!.
+### You have completed EventHub Hands On Lab. Hope this was fun !.

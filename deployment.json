@@ -1,0 +1,10 @@
+	{
+	  "memory": "2G",
+	  "instances": 1,
+	  "services": [
+		{
+		  "name": "tweets",
+		  "type": "OEHCS"
+		}
+	  ]
+	}

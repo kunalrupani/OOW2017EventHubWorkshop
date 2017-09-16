@@ -4,7 +4,7 @@
 
 EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In this lab, you will be seting up an EventHub Cluster in Oracle Cloud and stream data through it. This lab is devided into 3 sections
 
-**Section#1**: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
+**Section#1**: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers, Kafka Topic)
 
 **Section#2**: SSH into the EventHub Cluster and use Kafka built in tools to produce and consume data
 
@@ -20,7 +20,7 @@ EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In 
   - access_token_key
   - access_token_secret
 
-## **Section#1**: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers), Configure and Create a Kafka Topic
+## **Section#1**: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers, Kafka Topic)
 
 ### Step 1: Login to the Oracle Cloud
 
@@ -79,7 +79,9 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 
 - **cd /u01/oehpcs/confluent/bin**
 
-### Step 2: Start the producer and the consumer
+**Note: eventhubsshprivatekey, eventhubpublickey.pub are the private/public keys you can use are in this github repo. Alternatively, you can generate your own.** 
+
+### Step 3: Start the producer and the consumer
 
 #### Start the Producer
 - **./kafka-console-producer.sh --broker-list ip-address-of-your-node:6667 --topic  identityDomain-nameofyourtopic**
@@ -87,13 +89,13 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 #### Follow Step 1 again in a different window and start the Consumer
 - **./kafka-console-consumer.sh --bootstrap-server ip-address-of-your-node:6667 --topic identityDomain-nameofyourtopic --from-beginning**
 
-### Step 3: Send data
+### Step 4: Send data
 
 Type text/characters in the producer window. You will see the strings passed through EventHub and received on the consumer window
 
 ![](images/TerminalscreenProducer.png)
 
-### Step 4: Misc.
+### Step 5: Misc Info.
 
 The directory has several other command line tools to use - for instance you can type the below command to describe the topic configurtion
 - **./kafka-topics.sh --describe --zookeeper localhost:2181 --topic identityDomain-nameofyourtopic**
@@ -156,7 +158,7 @@ If you want to change the hashtag for the tweets you want to see, just use the f
 
 ### Step 5: Consuming the feeds from EventHub
 
-You have two options here.
+You have two options:
 
 - Use the same command line consumer tool used in Section#2 to see the live feeds
 - Deploy a Java EE consumer app (instructions below) to view the tweets. See Step 6 below.

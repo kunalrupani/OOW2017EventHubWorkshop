@@ -10,7 +10,7 @@ EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In 
 
 **Section#3** (Advanced): Deploy a Microservice app (NodeJS) in Application Container Cloud Service
 
-##Prerequisites
+## Prerequisites
 - Internet access on your laptop
 - Oracle Cloud Account user name, password, data center infomation ( this will be provided in the lab)
 - Ability to SSH to the Oracle Cloud from your Terminal (Mac) or Putty (Windows).Download a pre-made public and private ssh key from the GitHub repo. You will use these keys to SSH into the EventHub Cluster
@@ -51,18 +51,50 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 ![](images/gotoTopics.png)
 
 **Give the topic a name, use the defaults for the remaining configuration**
-**Note that the name of the topic created will be of the format _identitydomainname-TopicName_ **
+**Note that the name of the topic created will be of the format _identitydomainname-TopicName_**
 ![](images/createStream.png)
 
 
-### Congratulations!. You have now successully created an EventHub Cluster and are ready to produce and consume high throughput streams !
+### Congratulations!.
+### You have now successully created an EventHub Cluster and are ready to produce and consume high throughput streams !
 
 
 ## **Section#2**: SSH into the EventHub Cluster and use Kafka built in tools to produce and consume data
 
+### Step1: SSH access to the cluster is disabled by default. You would need to enable in first. Follw the steps in the screenshots below to enable it.
 
+![](images/ClickAccessRules.png)
 
+![](images/AccessRulesPage.png)
 
+### Step 2: SSH into your cluster
+- **ssh -i <private-key> opc@<ip-address-of-your-node>**
+
+- **sudo su oracle**
+
+- **cd /u01/oehpcs/confluent/bin**
+
+### Step 2: Start the producer and the consumer
+
+#### Start the Producer
+- **./kafka-console-producer.sh --broker-list <ip-address-of-your-node>:6667 --topic  <identityDomain-nameofyourtopic>**
+
+#### Follow Step 1 again in a different window and start the Consumer
+- **./kafka-console-consumer.sh --bootstrap-server <ip-address-of-your-node>:6667 --topic  <identityDomain-nameofyourtopic> --from-beginning**
+
+### Step 3: Send data
+
+Type text/characters in the producer window. You will see the strings passed through EventHub and received on the consumer window
+
+![](images/TerminalscreenProducer.png)
+
+### Step 4: Misc.
+
+The directory has several other command line tools to use - for instance you can type the below command to describe the topic configurtion
+- **./kafka-topics.sh --describe --zookeeper localhost:2181 --topic <identityDomain-nameofyourtopic>**
+
+### Congratulations!.
+### You have completed Section#2. If you still have time left - please proceed to Section#3
 
 
 ## **Section#3** (Advanced): Deploy a Microservice app (NodeJS) in Application Container Cloud Service

@@ -1,6 +1,6 @@
 # Welcome to Oracle Open World 2017 - EventHub Hands On Lab
 
-## Introduction
+## Introduction blah
 
 EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In this lab, you will be seting up an EventHub Cluster in Oracle Cloud and stream data through it. This lab is devided into 3 sections
 

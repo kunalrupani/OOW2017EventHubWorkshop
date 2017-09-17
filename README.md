@@ -79,7 +79,7 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 
 - **cd /u01/oehpcs/confluent/bin**
 
-**Note: eventhubsshprivatekey, eventhubpublickey.pub are the private/public keys you can use are in this github repo. Alternatively, you can generate your own.** 
+**Note: eventhubsshprivatekey, eventhubpublickey.pub are the private/public keys you can use are in this github repo. Alternatively, you can generate your own.**
 
 ### Step 3: Start the producer and the consumer
 

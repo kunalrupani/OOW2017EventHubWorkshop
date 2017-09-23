@@ -45,7 +45,7 @@ Click "Create Instance" and "All services" to find EventHub-Dedicated
 **Give the cluster a name of your choice**
 ![](images/createCluster.png)
 
-**Use the previously downloaded (see prerequisites) ssh public key and complete the configuration. Use defaults for all**
+**Use the previously downloaded (see prerequisites) ssh public key and complete the configuration. Use values as shown below**
 ![](images/configureClusterandCreate.png)
 
 **Once the above step is complete - the cluster should be created in a couple minutes**

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In this lab, you will be seting up an EventHub Cluster in Oracle Cloud and stream data through it. This lab is devided into 3 sections
+EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In this lab, you will be seting up an EventHub Cluster in Oracle Cloud and stream data through it. This lab is divided into 3 sections
 
 **Section#1**: Setting up an EventHub Cluster (Apache Zookeeper, Kafka Brokers, Kafka Topic)
 
@@ -24,19 +24,21 @@ EventHub Cloud Service is Oracle's Open Source Kafka Streaming Data service. In 
 
 ### Step 1: Login to the Oracle Cloud
 
-Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
+Login: https://myservices.oraclecloud.com/mycloud/faces/gDashboard.jspx
 
 **Select _Traditional Cloud Account_ and Data Center to be us2**
 
-
-![](images/cloudlogin.png)
+![](images/cloudmain.png)
+![](images/cloudLogin.png)
 
 **Select EventHub - Dedicated Cloud Service**
 ![](images/dashboard.png)
 
 
-**Go to the Service console**
-![](images/serviceconsole.png)
+**Open the Event Hub - Dedicated Instance Service console**
+
+Click "Create Instance" and "All services" to find EventHub-Dedicated
+![](images/createinstance.png)
 
 ### Step 2: Create your EventHub Cluster
 
@@ -52,11 +54,19 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 
 ### Step 3: Create a Topic in your cluster
 
-**Go to EventHub-Topics Console**
+- **Go to EventHub-Topics Console**
 ![](images/gotoTopics.png)
 
-**Give the topic a name, use the defaults for the remaining configuration**
-**Note that the name of the topic created will be of the format _identitydomainname-TopicName_**
+- **Click Create Service**
+
+- **Give the topic a name**
+
+- **Attach this topic to the just Created Cluster (in Hosted On menu)**
+
+- **Use the defaults for the remaining configuration**
+
+- **Note that the name of the topic created will be of the format _identitydomainname-TopicName_**
+
 ![](images/createStream.png)
 
 
@@ -68,7 +78,7 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 
 ### Step1: SSH access to the cluster is disabled by default. You would need to enable in first. Follw the steps in the screenshots below to enable it.
 
-![](images/ClickAccessRules.png)
+![](images/ClickAcccessRules.png)
 
 ![](images/AccessRulesPage.png)
 
@@ -86,7 +96,7 @@ Log into Oracle Cloud : https://cloud.oracle.com/en_US/sign-in
 #### Start the Producer
 - **./kafka-console-producer.sh --broker-list ip-address-of-your-node:6667 --topic  identityDomain-nameofyourtopic**
 
-#### Follow Step 1 again in a different window and start the Consumer
+#### Follow Step 2 again in a different window and start the Consumer
 - **./kafka-console-consumer.sh --bootstrap-server ip-address-of-your-node:6667 --topic identityDomain-nameofyourtopic --from-beginning**
 
 ### Step 4: Send data
@@ -95,7 +105,17 @@ Type text/characters in the producer window. You will see the strings passed thr
 
 ![](images/TerminalscreenProducer.png)
 
-### Step 5: Misc Info.
+### Step 5: Run throughput tests
+
+#### Start the Producer
+- **./kafka-producer-perf-test --producer-props bootstrap.servers=ip-address-of-your-node:6667 --topic identityDomain-nameofyourtopic  --num-records 2000000 --record-size 1000 --throughput 1000000000**
+
+#### Start Consumer
+- **.kafka-consumer-perf-test --broker-list ip-address-of-your-node:6667 --topic identityDomain-nameofyourtopic  --threads 1 --show-detailed-stats --reporting-interval 5000 --messages 10000000**
+
+
+
+### Step 6: Misc Info.
 
 The directory has several other command line tools to use - for instance you can type the below command to describe the topic configurtion
 - **./kafka-topics.sh --describe --zookeeper localhost:2181 --topic identityDomain-nameofyourtopic**
